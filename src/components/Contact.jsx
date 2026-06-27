@@ -11,6 +11,7 @@ const Contact = () => {
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -20,15 +21,30 @@ const Contact = () => {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', formData)
-    setSubmitted(true)
+    setIsSubmitting(true)
+
+    // Simulate form submission
     setTimeout(() => {
-      setSubmitted(false)
+      console.log('Form submitted:', formData)
+      setSubmitted(true)
+      setIsSubmitting(false)
       setFormData({ name: '', email: '', subject: '', message: '' })
-    }, 3000)
+      
+      // Reset success message after 3 seconds
+      setTimeout(() => {
+        setSubmitted(false)
+      }, 3000)
+    }, 1000)
+  }
+
+  const handleEmailClick = () => {
+    window.location.href = `mailto:aluyazino07@gmail.com`
+  }
+
+  const handleSocialClick = (url) => {
+    window.open(url, '_blank')
   }
 
   const containerVariants = {
@@ -81,23 +97,21 @@ const Contact = () => {
               <h3 className="text-2xl font-bold text-dark mb-6">Contact Information</h3>
 
               {/* Email */}
-              <motion.div
+              <motion.button
+                onClick={handleEmailClick}
                 whileHover={{ x: 10 }}
-                className="flex items-start gap-4"
+                className="flex items-start gap-4 w-full text-left cursor-pointer hover:opacity-80 transition-opacity"
               >
                 <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-lg flex items-center justify-center">
                   <FiMail size={24} className="text-blue-600" />
                 </div>
                 <div>
                   <h4 className="font-bold text-dark">Email</h4>
-                  <a
-                    href="mailto:david@example.com"
-                    className="text-gray-600 hover:text-blue-600 transition-colors"
-                  >
+                  <p className="text-gray-600 hover:text-blue-600 transition-colors">
                     aluyazino07@gmail.com
-                  </a>
+                  </p>
                 </div>
-              </motion.div>
+              </motion.button>
 
               {/* Location */}
               <motion.div
@@ -132,30 +146,30 @@ const Contact = () => {
             <motion.div variants={itemVariants} className="space-y-4 pt-6">
               <h4 className="font-bold text-dark">Follow Me</h4>
               <div className="flex gap-4">
-                <motion.a
-                  href="#"
+                <motion.button
+                  onClick={() => handleSocialClick('https://github.com/aluyazino07-creator')}
                   whileHover={{ scale: 1.1, y: -5 }}
                   whileTap={{ scale: 0.95 }}
-                  className="p-4 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg hover:from-blue-100 hover:to-indigo-100 transition-colors border border-blue-200"
+                  className="p-4 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg hover:from-blue-100 hover:to-indigo-100 transition-colors border border-blue-200 cursor-pointer"
                 >
                   <FaGithub size={24} className="text-dark" />
-                </motion.a>
-                <motion.a
-                  href="#"
+                </motion.button>
+                <motion.button
+                  onClick={() => handleSocialClick('https://linkedin.com/in/david-aluya')}
                   whileHover={{ scale: 1.1, y: -5 }}
                   whileTap={{ scale: 0.95 }}
-                  className="p-4 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg hover:from-blue-100 hover:to-indigo-100 transition-colors border border-blue-200"
+                  className="p-4 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg hover:from-blue-100 hover:to-indigo-100 transition-colors border border-blue-200 cursor-pointer"
                 >
                   <FaLinkedin size={24} className="text-blue-600" />
-                </motion.a>
-                <motion.a
-                  href="mailto:aluyazino07@gmail.com"
+                </motion.button>
+                <motion.button
+                  onClick={handleEmailClick}
                   whileHover={{ scale: 1.1, y: -5 }}
                   whileTap={{ scale: 0.95 }}
-                  className="p-4 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg hover:from-blue-100 hover:to-indigo-100 transition-colors border border-blue-200"
+                  className="p-4 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg hover:from-blue-100 hover:to-indigo-100 transition-colors border border-blue-200 cursor-pointer"
                 >
                   <FiMail size={24} className="text-dark" />
-                </motion.a>
+                </motion.button>
               </div>
             </motion.div>
           </motion.div>
@@ -239,9 +253,10 @@ const Contact = () => {
               whileHover={{ scale: 1.05, boxShadow: '0 20px 50px rgba(37, 99, 235, 0.2)' }}
               whileTap={{ scale: 0.95 }}
               type="submit"
-              className="w-full px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-lg shadow-soft hover:shadow-soft-lg transition-all"
+              disabled={isSubmitting}
+              className="w-full px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-lg shadow-soft hover:shadow-soft-lg transition-all disabled:opacity-70 cursor-pointer"
             >
-              {submitted ? '✓ Message Sent!' : 'Send Message'}
+              {isSubmitting ? 'Sending...' : submitted ? '✓ Message Sent!' : 'Send Message'}
             </motion.button>
           </motion.form>
         </div>

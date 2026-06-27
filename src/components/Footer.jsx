@@ -12,6 +12,17 @@ const Footer = () => {
     },
   }
 
+  const handleNavClick = (section) => {
+    const element = document.getElementById(section)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <footer className="bg-dark text-white py-12 px-4 sm:px-6 lg:px-8">
       <motion.div
@@ -23,8 +34,10 @@ const Footer = () => {
       >
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 pb-8 border-b border-gray-700">
           {/* Brand */}
-          <motion.div
+          <motion.button
             whileHover={{ scale: 1.05 }}
+            onClick={handleScrollToTop}
+            className="text-left cursor-pointer"
           >
             <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent mb-2">
               David Aluya
@@ -32,7 +45,7 @@ const Footer = () => {
             <p className="text-gray-400 text-sm">
               Frontend Developer | Future Tech Entrepreneur
             </p>
-          </motion.div>
+          </motion.button>
 
           {/* Quick Links */}
           <motion.div
@@ -43,14 +56,14 @@ const Footer = () => {
           >
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((link) => (
+              {['home', 'about', 'skills', 'projects', 'contact'].map((link) => (
                 <motion.li key={link}>
-                  <a
-                    href={`#${link.toLowerCase()}`}
-                    className="hover:text-white transition-colors"
+                  <button
+                    onClick={() => handleNavClick(link)}
+                    className="hover:text-white transition-colors cursor-pointer capitalize"
                   >
                     {link}
-                  </a>
+                  </button>
                 </motion.li>
               ))}
             </ul>

@@ -9,7 +9,7 @@ const Projects = () => {
       description: 'A modern, responsive landing page for a SaaS product with smooth animations and engaging interactions.',
       image: 'https://via.placeholder.com/500x300/2563EB/ffffff?text=SaaS+Landing',
       tech: ['React', 'Tailwind CSS', 'Framer Motion'],
-      github: '#',
+      github: 'https://github.com/aluyazino07-creator',
       demo: '#',
     },
     {
@@ -18,7 +18,7 @@ const Projects = () => {
       description: 'A fully responsive analytics dashboard with sidebar navigation, charts, and data visualization.',
       image: 'https://via.placeholder.com/500x300/4F46E5/ffffff?text=Dashboard+UI',
       tech: ['React', 'Tailwind CSS', 'Chart.js'],
-      github: '#',
+      github: 'https://github.com/aluyazino07-creator',
       demo: '#',
     },
     {
@@ -27,7 +27,7 @@ const Projects = () => {
       description: 'Modern login and signup interfaces with form validation, smooth transitions, and accessible design.',
       image: 'https://via.placeholder.com/500x300/2563EB/ffffff?text=Auth+UI',
       tech: ['HTML5', 'CSS3', 'JavaScript'],
-      github: '#',
+      github: 'https://github.com/aluyazino07-creator',
       demo: '#',
     },
     {
@@ -36,7 +36,7 @@ const Projects = () => {
       description: 'Real-time weather application that fetches data from an API and displays weather information beautifully.',
       image: 'https://via.placeholder.com/500x300/4F46E5/ffffff?text=Weather+App',
       tech: ['React', 'API Integration', 'Tailwind CSS'],
-      github: '#',
+      github: 'https://github.com/aluyazino07-creator',
       demo: '#',
     },
     {
@@ -45,7 +45,7 @@ const Projects = () => {
       description: 'A CRUD application with local storage integration for managing tasks, complete with delete and edit features.',
       image: 'https://via.placeholder.com/500x300/2563EB/ffffff?text=Task+Manager',
       tech: ['JavaScript', 'Local Storage', 'CSS3'],
-      github: '#',
+      github: 'https://github.com/aluyazino07-creator',
       demo: '#',
     },
     {
@@ -54,7 +54,7 @@ const Projects = () => {
       description: 'A premium, responsive portfolio website showcasing projects and skills with smooth animations.',
       image: 'https://via.placeholder.com/500x300/4F46E5/ffffff?text=Portfolio',
       tech: ['React', 'Tailwind CSS', 'Framer Motion'],
-      github: '#',
+      github: 'https://github.com/aluyazino07-creator/david-aluya-portfolio',
       demo: '#',
     },
   ]
@@ -76,6 +76,18 @@ const Projects = () => {
       y: 0,
       transition: { duration: 0.6 },
     },
+  }
+
+  const handleGitHubClick = (url) => {
+    window.open(url, '_blank')
+  }
+
+  const handleDemoClick = (url) => {
+    if (url && url !== '#') {
+      window.open(url, '_blank')
+    } else {
+      alert('Demo link coming soon!')
+    }
   }
 
   return (
@@ -143,22 +155,22 @@ const Projects = () => {
 
                 {/* Buttons */}
                 <div className="flex gap-3">
-                  <motion.a
-                    href={project.github}
+                  <motion.button
+                    onClick={() => handleGitHubClick(project.github)}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-dark text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors"
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-dark text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors cursor-pointer"
                   >
                     <FiGithub size={18} /> Code
-                  </motion.a>
-                  <motion.a
-                    href={project.demo}
+                  </motion.button>
+                  <motion.button
+                    onClick={() => handleDemoClick(project.demo)}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border-2 border-dark text-dark font-semibold rounded-lg hover:bg-light transition-colors"
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border-2 border-dark text-dark font-semibold rounded-lg hover:bg-light transition-colors cursor-pointer"
                   >
                     <FiExternalLink size={18} /> Demo
-                  </motion.a>
+                  </motion.button>
                 </div>
               </div>
             </motion.div>

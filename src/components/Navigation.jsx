@@ -20,7 +20,12 @@ const Navigation = () => {
     const element = document.getElementById(item.toLowerCase())
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
+      setIsOpen(false)
     }
+  }
+
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
     setIsOpen(false)
   }
 
@@ -42,9 +47,12 @@ const Navigation = () => {
             className="flex-shrink-0"
             whileHover={{ scale: 1.05 }}
           >
-            <a href="#" className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            <button
+              onClick={handleLogoClick}
+              className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent cursor-pointer hover:opacity-80 transition-opacity"
+            >
               DA
-            </a>
+            </button>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -53,7 +61,7 @@ const Navigation = () => {
               <motion.button
                 key={item}
                 onClick={() => handleNavClick(item)}
-                className="px-4 py-2 text-sm font-medium text-dark hover:text-primary rounded-lg transition-colors"
+                className="px-4 py-2 text-sm font-medium text-dark hover:text-primary rounded-lg transition-colors cursor-pointer"
                 whileHover={{ backgroundColor: '#F8FAFC' }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -66,7 +74,7 @@ const Navigation = () => {
           <div className="md:hidden">
             <motion.button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg hover:bg-light"
+              className="p-2 rounded-lg hover:bg-light cursor-pointer"
               whileTap={{ scale: 0.95 }}
             >
               {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
@@ -86,7 +94,7 @@ const Navigation = () => {
               <motion.button
                 key={item}
                 onClick={() => handleNavClick(item)}
-                className="w-full text-left px-4 py-3 text-sm font-medium text-dark hover:bg-light rounded-lg transition-colors"
+                className="w-full text-left px-4 py-3 text-sm font-medium text-dark hover:bg-light rounded-lg transition-colors cursor-pointer"
                 whileHover={{ paddingLeft: '20px' }}
                 whileTap={{ scale: 0.95 }}
               >

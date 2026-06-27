@@ -35,6 +35,71 @@ const Hero = () => {
     },
   }
 
+  const handleViewProjects = () => {
+    const projectsElement = document.getElementById('projects')
+    if (projectsElement) {
+      projectsElement.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const handleDownloadResume = () => {
+    // Create a simple resume download (replace with actual resume URL)
+    const resumeContent = `
+DAVID ALUYA
+Frontend Developer | Nigeria
+
+CONTACT
+Email: aluyazino07@gmail.com
+GitHub: github.com/aluyazino07-creator
+Portfolio: yourdomain.com
+
+SKILLS
+- HTML5, CSS3, JavaScript
+- React, Responsive Design
+- Tailwind CSS, Framer Motion
+- Git, GitHub
+- Accessibility & SEO
+
+EXPERIENCE
+Self-Taught Frontend Developer (2024 - Present)
+- Built responsive websites with HTML, CSS, JavaScript
+- Created reusable React components
+- Implemented accessibility best practices
+- Optimized web performance
+
+EDUCATION
+Commercial Studies (2022 - 2024)
+
+PROJECTS
+1. SaaS Landing Page - React, Tailwind CSS, Framer Motion
+2. Analytics Dashboard - React, Tailwind CSS, Chart.js
+3. Authentication UI - HTML5, CSS3, JavaScript
+4. Weather App - React, API Integration
+5. Task Manager - JavaScript, Local Storage
+6. Portfolio Website - React, Tailwind CSS, Framer Motion
+    `
+    const element = document.createElement('a')
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(resumeContent))
+    element.setAttribute('download', 'David_Aluya_Resume.txt')
+    element.style.display = 'none'
+    document.body.appendChild(element)
+    element.click()
+    document.body.removeChild(element)
+  }
+
+  const handleContact = () => {
+    const contactElement = document.getElementById('contact')
+    if (contactElement) {
+      contactElement.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const handleSocialClick = (url) => {
+    if (url && url !== '#') {
+      window.open(url, '_blank')
+    }
+  }
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <FloatingCircles />
@@ -89,23 +154,26 @@ const Hero = () => {
               className="flex flex-col sm:flex-row gap-4 pt-4"
             >
               <motion.button
+                onClick={handleViewProjects}
                 whileHover={{ scale: 1.05, boxShadow: '0 20px 50px rgba(37, 99, 235, 0.2)' }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-lg shadow-soft transition-all"
+                className="flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-lg shadow-soft transition-all cursor-pointer hover:shadow-lg"
               >
                 View Projects <FiArrowRight size={20} />
               </motion.button>
               <motion.button
+                onClick={handleDownloadResume}
                 whileHover={{ scale: 1.05, backgroundColor: '#F8FAFC' }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center justify-center gap-2 px-8 py-4 border-2 border-dark text-dark font-semibold rounded-lg hover:bg-light transition-all"
+                className="flex items-center justify-center gap-2 px-8 py-4 border-2 border-dark text-dark font-semibold rounded-lg hover:bg-light transition-all cursor-pointer"
               >
                 <FiDownload size={20} /> Resume
               </motion.button>
               <motion.button
+                onClick={handleContact}
                 whileHover={{ scale: 1.05, backgroundColor: '#F8FAFC' }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center justify-center gap-2 px-8 py-4 border-2 border-dark text-dark font-semibold rounded-lg hover:bg-light transition-all"
+                className="flex items-center justify-center gap-2 px-8 py-4 border-2 border-dark text-dark font-semibold rounded-lg hover:bg-light transition-all cursor-pointer"
               >
                 <FiMail size={20} /> Contact
               </motion.button>
@@ -116,27 +184,27 @@ const Hero = () => {
               variants={itemVariants}
               className="flex gap-4 pt-8"
             >
-              <motion.a
-                href="#"
+              <motion.button
+                onClick={() => handleSocialClick('https://github.com/aluyazino07-creator')}
                 whileHover={{ scale: 1.1, y: -5 }}
-                className="p-3 bg-light rounded-lg hover:bg-gray-200 transition-colors"
+                className="p-3 bg-light rounded-lg hover:bg-gray-200 transition-colors cursor-pointer"
               >
                 <FaGithub size={24} className="text-dark" />
-              </motion.a>
-              <motion.a
-                href="#"
+              </motion.button>
+              <motion.button
+                onClick={() => handleSocialClick('https://linkedin.com/in/david-aluya')}
                 whileHover={{ scale: 1.1, y: -5 }}
-                className="p-3 bg-light rounded-lg hover:bg-gray-200 transition-colors"
+                className="p-3 bg-light rounded-lg hover:bg-gray-200 transition-colors cursor-pointer"
               >
                 <FaLinkedin size={24} className="text-blue-600" />
-              </motion.a>
-              <motion.a
-                href="#"
+              </motion.button>
+              <motion.button
+                onClick={() => handleSocialClick('mailto:aluyazino07@gmail.com')}
                 whileHover={{ scale: 1.1, y: -5 }}
-                className="p-3 bg-light rounded-lg hover:bg-gray-200 transition-colors"
+                className="p-3 bg-light rounded-lg hover:bg-gray-200 transition-colors cursor-pointer"
               >
                 <FiMail size={24} className="text-dark" />
-              </motion.a>
+              </motion.button>
             </motion.div>
           </motion.div>
 
