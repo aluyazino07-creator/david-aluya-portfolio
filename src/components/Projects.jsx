@@ -7,7 +7,7 @@ const Projects = () => {
       id: 1,
       title: 'SaaS Landing Page',
       description: 'A modern, responsive landing page for a SaaS product with smooth animations and engaging interactions.',
-      image: 'https://via.placeholder.com/500x300/2563EB/ffffff?text=SaaS+Landing',
+      image: 'https://images.unsplash.com/photo-1460925895917-adf4e566c359?w=500&h=300&fit=crop',
       tech: ['React', 'Tailwind CSS', 'Framer Motion'],
       github: 'https://github.com/aluyazino07-creator',
       demo: '#',
@@ -16,7 +16,7 @@ const Projects = () => {
       id: 2,
       title: 'Analytics Dashboard',
       description: 'A fully responsive analytics dashboard with sidebar navigation, charts, and data visualization.',
-      image: 'https://via.placeholder.com/500x300/4F46E5/ffffff?text=Dashboard+UI',
+      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop',
       tech: ['React', 'Tailwind CSS', 'Chart.js'],
       github: 'https://github.com/aluyazino07-creator',
       demo: '#',
@@ -25,7 +25,7 @@ const Projects = () => {
       id: 3,
       title: 'Authentication UI',
       description: 'Modern login and signup interfaces with form validation, smooth transitions, and accessible design.',
-      image: 'https://via.placeholder.com/500x300/2563EB/ffffff?text=Auth+UI',
+      image: 'https://images.unsplash.com/photo-1555949519-2f4233424c94?w=500&h=300&fit=crop',
       tech: ['HTML5', 'CSS3', 'JavaScript'],
       github: 'https://github.com/aluyazino07-creator',
       demo: '#',
@@ -34,7 +34,7 @@ const Projects = () => {
       id: 4,
       title: 'Weather App',
       description: 'Real-time weather application that fetches data from an API and displays weather information beautifully.',
-      image: 'https://via.placeholder.com/500x300/4F46E5/ffffff?text=Weather+App',
+      image: 'https://images.unsplash.com/photo-1536431311894-8c1eed018ecb?w=500&h=300&fit=crop',
       tech: ['React', 'API Integration', 'Tailwind CSS'],
       github: 'https://github.com/aluyazino07-creator',
       demo: '#',
@@ -43,7 +43,7 @@ const Projects = () => {
       id: 5,
       title: 'Task Manager',
       description: 'A CRUD application with local storage integration for managing tasks, complete with delete and edit features.',
-      image: 'https://via.placeholder.com/500x300/2563EB/ffffff?text=Task+Manager',
+      image: 'https://images.unsplash.com/photo-1540224477371-5fffe28ca84d?w=500&h=300&fit=crop',
       tech: ['JavaScript', 'Local Storage', 'CSS3'],
       github: 'https://github.com/aluyazino07-creator',
       demo: '#',
@@ -52,7 +52,7 @@ const Projects = () => {
       id: 6,
       title: 'Portfolio Website',
       description: 'A premium, responsive portfolio website showcasing projects and skills with smooth animations.',
-      image: 'https://via.placeholder.com/500x300/4F46E5/ffffff?text=Portfolio',
+      image: 'https://images.unsplash.com/photo-1487180144351-b8472da7d491?w=500&h=300&fit=crop',
       tech: ['React', 'Tailwind CSS', 'Framer Motion'],
       github: 'https://github.com/aluyazino07-creator/david-aluya-portfolio',
       demo: '#',
@@ -127,6 +127,7 @@ const Projects = () => {
                   className="w-full h-full object-cover"
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.3 }}
+                  loading="lazy"
                 />
               </div>
 
