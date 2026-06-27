@@ -2,10 +2,18 @@ import { motion } from 'framer-motion'
 import { FiArrowRight, FiDownload, FiMail } from 'react-icons/fi'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import FloatingCircles from './FloatingCircles'
+import { useState, useEffect } from 'react'
 
 const Hero = () => {
   const words = ['Frontend Developer', 'React Developer', 'JavaScript Developer', 'UI Enthusiast']
-  const [displayedWord, setDisplayedWord] = motion.useState(0)
+  const [displayedWord, setDisplayedWord] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDisplayedWord((prev) => (prev + 1) % words.length)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [])
 
   const containerVariants = {
     hidden: { opacity: 0 },
